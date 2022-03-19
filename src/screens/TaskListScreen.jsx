@@ -1,8 +1,9 @@
-import React from "react";
-import { StyleSheet,View,Text } from "react-native";
+import React,{ useState } from "react";
+import { StyleSheet,View,Text,TextInput } from "react-native";
 import FloatingBtn from '../components/FloatingBtn'
 
 export default function TaskListScreen(){
+    const [memo,setMemo] = useState("");
     return(
         <View style={styles.container}>
             <Text style={styles.taskLabel}>
@@ -14,8 +15,11 @@ export default function TaskListScreen(){
             <Text>
                 テキスト3
             </Text>
+            <View>
+                <TextInput style={styles.textBox} onChangeText={setMemo} value={memo} />
+            </View>
             <View style={styles.blusBtnPosition}>
-                <FloatingBtn />
+                <FloatingBtn color="#aa0000">-</FloatingBtn>
             </View>
         </View>
     )
@@ -43,5 +47,9 @@ const styles = StyleSheet.create({
     },
     textLbel:{
         paddingVertical:16,
+    },
+    textBox:{
+        backgroundColor:"#fff",
+        borderColor:"#888888",
     }
 })

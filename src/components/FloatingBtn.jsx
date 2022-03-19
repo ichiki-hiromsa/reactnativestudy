@@ -2,17 +2,24 @@ import { setStatusBarBackgroundColor } from "expo-status-bar";
 import React from "react";
 import { View,Text,StyleSheet,TouchableOpacity } from "react-native";
 
-export default function FloatingBtn(){
+export default function FloatingBtn(props){
+    const {children,color} = props;
+    let customColor={};
+    if(color){
+        customColor = {
+            backgroundColor:color,
+        };    
+    }
     onPress = () => {
         alert("press!!");
-      }    
+    }    
     return(
         <View>
             <TouchableOpacity
                 style={styles.btnWropper}
                 onPress={onPress}
             >
-                <Text style={styles.btnLabel}>+</Text>
+                <Text style={[styles.btnLabel,customColor]}>{children}</Text>
             </TouchableOpacity>            
         </View>
     )
@@ -36,6 +43,6 @@ const styles =StyleSheet.create({
     btnLabel:{
         color:"#fff",
         fontSize:30,
-        lineHeight:30,
+//        lineHeight:30,
     },
 })
